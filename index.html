@@ -15,10 +15,10 @@
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link type="text/css" rel="stylesheet" href="https://github.com/avalente/fable-modulo/content/navbar-fixed-left.css" />
-    <link type="text/css" rel="stylesheet" href="https://github.com/avalente/fable-modulo/content/fsdocs-default.css" />
-    <link type="text/css" rel="stylesheet" href="https://github.com/avalente/fable-modulo/content/fsdocs-custom.css" />
-    <script type="text/javascript" src="https://github.com/avalente/fable-modulo/content/fsdocs-tips.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://avalente.github.io/content/navbar-fixed-left.css" />
+    <link type="text/css" rel="stylesheet" href="https://avalente.github.io/content/fsdocs-default.css" />
+    <link type="text/css" rel="stylesheet" href="https://avalente.github.io/content/fsdocs-custom.css" />
+    <script type="text/javascript" src="https://avalente.github.io/content/fsdocs-tips.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -42,7 +42,7 @@
   API Reference
 </li>             
 <li class="nav-item">
-  <a class="nav-link" href="https://github.com/avalente/fable-modulo/reference/index.html">
+  <a class="nav-link" href="https://avalente.github.io/reference/index.html">
     All Namespaces
   </a>
 </li>
@@ -221,7 +221,7 @@ dotnet add src/App.fsproj package Fable.Modulo
 </ol>
 <p>Let's see the relevant code</p>
 <h4><a name="Form-Model" class="anchor" href="#Form-Model">Form Model</a></h4>
-<p>A <code>form</code> is represented by a plain record type in <code>Fable.Modulo</code>, each field of the record should be of type <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a>:</p>
+<p>A <code>form</code> is represented by a plain record type in <code>Fable.Modulo</code>, each field of the record should be of type <a href="https://avalente.github.io/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a>:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="id">Field</span><span class="pn">&lt;</span><span class="id">&#39;</span><span class="id">t</span><span class="pn">&gt;</span> <span class="o">=</span> <span class="id">FormFieldModel</span><span class="pn">&lt;</span><span class="id">FormModel</span><span class="pn">,</span> <span class="id">&#39;</span><span class="id">t</span><span class="pn">&gt;</span>
 <span class="k">and</span> <span class="id">FormModel</span> <span class="o">=</span>
     <span class="pn">{</span>
@@ -231,7 +231,7 @@ dotnet add src/App.fsproj package Fable.Modulo
         <span class="id">ChoiceOptional</span> <span class="pn">:</span> <span class="id">Field</span><span class="pn">&lt;</span><span class="pn">{|</span> <span class="id">Key</span> <span class="pn">:</span> <span onmouseout="hideTip(event, 'fs7', 40)" onmouseover="showTip(event, 'fs7', 40)" class="id">int</span><span class="pn">;</span> <span class="id">Value</span> <span class="pn">:</span> <span onmouseout="hideTip(event, 'fs3', 41)" onmouseover="showTip(event, 'fs3', 41)" class="id">string</span> <span class="pn">|}</span> <span onmouseout="hideTip(event, 'fs5', 42)" onmouseover="showTip(event, 'fs5', 42)" class="id">option</span><span class="pn">&gt;</span>
     <span class="pn">}</span>
 </code></pre>
-<p>Here a type abbreviation is used to reduce the boilerplate. As you can see <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a> is a generic type that accepts
+<p>Here a type abbreviation is used to reduce the boilerplate. As you can see <a href="https://avalente.github.io/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a> is a generic type that accepts
 two arguments:</p>
 <ol>
 <li>the type of the enclosing form (the record this field belongs to)</li>
@@ -247,7 +247,7 @@ two arguments:</p>
 Since you get the whole form in every dispatched message the internal consistency is automatically ensured; on the other hand it is not easy to identify
 the field that caused the message, but since you have both the old and the new form models it should be easy to check what changed.</p>
 <h4><a name="View" class="anchor" href="#View">View</a></h4>
-<p>The example uses the <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-auto-view.html">View.basicForm</a> function:</p>
+<p>The example uses the <a href="https://avalente.github.io/reference/fable-modulo-auto-view.html">View.basicForm</a> function:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="id">Auto</span><span class="pn">.</span><span class="id">View</span><span class="pn">.</span><span class="id">basicForm</span> <span class="id">model</span><span class="pn">.</span><span class="id">Form</span> <span class="pn">(</span><span class="id">UpdateForm</span> <span class="pn">&gt;</span><span class="pn">&gt;</span> <span class="id">dispatch</span><span class="pn">)</span> <span class="pn">[</span>
     <span class="id">button</span> <span class="pn">[</span><span class="id">OnClick</span> <span class="pn">(</span><span class="k">fun</span> <span class="id">e</span> <span class="k">-&gt;</span> <span class="id">dispatch</span> <span class="id">ValidateForm</span><span class="pn">;</span> <span class="id">e</span><span class="pn">.</span><span class="id">preventDefault</span><span class="pn">(</span><span class="pn">)</span><span class="pn">)</span><span class="pn">]</span> <span class="pn">[</span><span class="id">str</span> <span class="s">&quot;Validate&quot;</span><span class="pn">]</span>
 <span class="pn">]</span>
@@ -255,32 +255,32 @@ the field that caused the message, but since you have both the old and the new f
 <p>It generates automatically an html <code>form</code> element by reflecting the <code>model.Form</code> object and dispatching an <code>UpdateForm</code> message for
 each underlying field's state update. Refer to the <a href="#View">view</a> section for informations about the customization of the html output.</p>
 <h1><a name="Modeling" class="anchor" href="#Modeling">Modeling</a></h1>
-<p>The main building block of <code>Fable.Modulo</code> modeling is the type <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a>, which wraps three more types:</p>
+<p>The main building block of <code>Fable.Modulo</code> modeling is the type <a href="https://avalente.github.io/reference/fable-modulo-formfieldmodel-2.html">FormFieldModel</a>, which wraps three more types:</p>
 <ul>
-<li><a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a>: used to represent the state underlying an html <code>input</code> element</li>
-<li><a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formcheckboxmodel-1.html">FormCheckboxModel</a>: used to represent the state underlying an html <code>checkbox</code> element</li>
-<li><a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formselectmodel-2.html">FormSelectModel</a>: used to represent the state underlying an html <code>select</code> element</li>
+<li><a href="https://avalente.github.io/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a>: used to represent the state underlying an html <code>input</code> element</li>
+<li><a href="https://avalente.github.io/reference/fable-modulo-formcheckboxmodel-1.html">FormCheckboxModel</a>: used to represent the state underlying an html <code>checkbox</code> element</li>
+<li><a href="https://avalente.github.io/reference/fable-modulo-formselectmodel-2.html">FormSelectModel</a>: used to represent the state underlying an html <code>select</code> element</li>
 </ul>
-<p>Every type implements the <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-iformfieldmodel-2.html">IFormFieldModel</a>; some informations are common to the three types, such as:
+<p>Every type implements the <a href="https://avalente.github.io/reference/fable-modulo-iformfieldmodel-2.html">IFormFieldModel</a>; some informations are common to the three types, such as:
 - underlying value
 - layout data (label, tooltip etc.)
 - validation function</p>
 <p>Other informations are specific, for instance:
-- <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> needs to keep track of the text displayed in the input element and a parser function to transform the text to the underlying value
-- <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formselectmodel-2.html">FormSelectModel</a> needs the list of allowed values, a function to transform an underlying value to a displayed text and so on</p>
+- <a href="https://avalente.github.io/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> needs to keep track of the text displayed in the input element and a parser function to transform the text to the underlying value
+- <a href="https://avalente.github.io/reference/fable-modulo-formselectmodel-2.html">FormSelectModel</a> needs the list of allowed values, a function to transform an underlying value to a displayed text and so on</p>
 <h4><a name="Underlying-value" class="anchor" href="#Underlying-value">Underlying value</a></h4>
 <p>The underlying value is represented by the type:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span onmouseout="hideTip(event, 'fs19', 43)" onmouseover="showTip(event, 'fs19', 43)" class="id">Result</span><span class="pn">&lt;</span><span class="id">&#39;</span><span class="id">t</span><span class="pn">,</span> <span onmouseout="hideTip(event, 'fs3', 44)" onmouseover="showTip(event, 'fs3', 44)" class="id">string</span><span class="pn">&gt;</span>
 </code></pre>
 <p>The value can be <code>Error</code>, for instance if you have an integer field and the user typed some alphabetic character or if the field has a custom
 validator attached.</p>
-<p>The type of the value for a <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-formcheckboxmodel-1.html">FormCheckboxModel</a> is constrained to <code>bool</code>, but for the other kind of fields it can be every
+<p>The type of the value for a <a href="https://avalente.github.io/reference/fable-modulo-formcheckboxmodel-1.html">FormCheckboxModel</a> is constrained to <code>bool</code>, but for the other kind of fields it can be every
 f# type including records and discriminated unions.</p>
 <h4><a name="Updater" class="anchor" href="#Updater">Updater</a></h4>
 <p>A central concept in <code>Fable.Modulo</code> is the <code>updater</code>: it is a function that takes a field and a <code>form</code> and returns an updated <code>form</code></p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="id">FormInputModel</span><span class="pn">&lt;</span><span class="id">&#39;</span><span class="id">f</span><span class="pn">,</span> <span class="id">&#39;</span><span class="id">t</span><span class="pn">&gt;</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">f</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">f</span>
 </code></pre>
-<p>For instance a raw <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> could be created explicitly by using <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-forminputmodel.html">FormInputModel.create</a>:</p>
+<p>For instance a raw <a href="https://avalente.github.io/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> could be created explicitly by using <a href="https://avalente.github.io/reference/fable-modulo-forminputmodel.html">FormInputModel.create</a>:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="id">FormInputModel</span><span class="pn">.</span><span class="id">create</span> <span class="s">&quot;&quot;</span> <span class="pn">(</span><span onmouseout="hideTip(event, 'fs15', 45)" onmouseover="showTip(event, 'fs15', 45)" class="id">Ok</span> <span class="s">&quot;&quot;</span><span class="pn">)</span> <span class="id">Parsers</span><span class="pn">.</span><span class="id">string</span> <span class="id">Formatters</span><span class="pn">.</span><span class="id">string</span> <span class="pn">(</span><span class="k">fun</span> <span class="id">item</span> <span class="id">form</span> <span class="k">-&gt;</span> <span class="pn">{</span><span class="id">form</span> <span class="k">with</span> <span class="id">MyField</span> <span class="o">=</span> <span class="id">item</span><span class="pn">}</span><span class="pn">)</span>
 </code></pre>
 <p>The line above creates a new field with:</p>
@@ -291,8 +291,8 @@ f# type including records and discriminated unions.</p>
 <li><code>Formatters.string</code> as the formatter, used to generate the display text from the underlying value</li>
 <li>an <code>updater function</code> that replace the field <code>MyField</code> in the given form with the new instance of the field</li>
 </ul>
-<p>The updater function is just boilerplate and if you use the function <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-auto.html">Auto.initForm</a> it gets created automatically for every field in the record.</p>
-<p>Thw workflow when the use changes the content of an input element for a <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> is the following:
+<p>The updater function is just boilerplate and if you use the function <a href="https://avalente.github.io/reference/fable-modulo-auto.html">Auto.initForm</a> it gets created automatically for every field in the record.</p>
+<p>Thw workflow when the use changes the content of an input element for a <a href="https://avalente.github.io/reference/fable-modulo-forminputmodel-2.html">FormInputModel</a> is the following:
 1. the field's underlying value is updated by the result of the parser function called on the input element's text
 1. if a validator function is available, the new value is validated and the field's underlying value is update accordingly
 1. the updater function is called with the new field
@@ -312,7 +312,7 @@ the modeling part of the library or you can use one of the provided helpers.</p>
 <span class="pn">]</span>
 </code></pre>
 <p>this creates a plain <code>Fable.React</code> element that displays the text stored in the field named <code>String</code> in the form model.
-The function <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-view-forminputmodel.html">FormInputModel.onChange</a> provides the glue between the react element and the form model</p>
+The function <a href="https://avalente.github.io/reference/fable-modulo-view-forminputmodel.html">FormInputModel.onChange</a> provides the glue between the react element and the form model</p>
 </li>
 <li>
 <p>with basic helpers, for instance:</p>
@@ -323,7 +323,7 @@ The function <a href="https://github.com/avalente/fable-modulo/reference/fable-m
 </li>
 </ol>
 <h3><a name="Automatic-implementation" class="anchor" href="#Automatic-implementation">Automatic implementation</a></h3>
-<p>In order to further reduce the boilerplate code <code>Fable.Modulo</code> provides the <a href="https://github.com/avalente/fable-modulo/reference/fable-modulo-auto-view.html">View</a> module that uses reflection to generate
+<p>In order to further reduce the boilerplate code <code>Fable.Modulo</code> provides the <a href="https://avalente.github.io/reference/fable-modulo-auto-view.html">View</a> module that uses reflection to generate
 react elements automatically from the model record.</p>
 <p>The module <code>Bulma</code> implements an automatic form and applies the structure and styling from the <a href="https://bulma.io/">bulma</a> framework.</p>
 
