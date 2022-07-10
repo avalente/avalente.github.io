@@ -239,6 +239,8 @@ two arguments:</p>
 <li>the type of the underlying value: there is no restriction on it, for instance I used an anonymous record wrapped in an <code>Option</code> in the example above.</li>
 </ol>
 <p>Refer to the <a href="#Modeling">modeling</a> section for further informations.</p>
+<p><strong>WARNING</strong>: if you are using the "automatic" mode don't forget to call <a href="https://avalente.github.io/reference/fable-modulo-auto.html">Auto.initForm</a> on the record that represents your
+form: this call will create the <a href="#Updater"><em>updater</em></a> functions.</p>
 <h4><a name="Message" class="anchor" href="#Message">Message</a></h4>
 <p>A single message is used for the state change of every field in the form:</p>
 <pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="id">Msg</span> <span class="o">=</span> 
